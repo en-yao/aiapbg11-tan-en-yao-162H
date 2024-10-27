@@ -18,6 +18,8 @@ from sklearn.metrics import precision_recall_curve, roc_curve, average_precision
 import config
 import re
 import os
+from imblearn.under_sampling import RandomUnderSampler
+from imblearn.pipeline import Pipeline as ImbPipeline
 
 class ClassifierPipeline:
     def __init__(self, config):
@@ -164,7 +166,14 @@ class ClassifierPipeline:
 
             for name, (model, param_dist) in self.classifiers.items():
                 # Create pipeline
-                pipeline = Pipeline(steps=[('preprocessor', preprocessor), ('classifier', model)])
+                # pipeline = Pipeline(steps=[('preprocessor', preprocessor), ('classifier', model)])
+
+                # Create pipelien with undersampler
+                pipeline = ImbPipeline(steps=[
+                    ('preprocessor', preprocessor),
+                    ('smote', RandomUnderSampler(random_state=self.config.split['random_state'])),
+                    ('classifier', model)  # Use the classifier from the initialized classifiers
+                ])
 
                 # Run RandomizedSearchCV
                 random_search = RandomizedSearchCV(
