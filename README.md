@@ -121,12 +121,21 @@ Missing an actual fault may lead to serious repercussions, potentially endangeri
 *Risk Mitigation:*
 Failure to detect a fault might be more costly and dangerous than misidentifying a non-fault. While misidentifynig a non-fault is acceptable, it is critical not to miss a fault that could lead to a breakdown or accident.
 
-Out of the 5 models evaluated, SVC has the highest overall recall score across Failures A to E
-- Failure A: SVC has the highest median recall score of 0.8
-- Failure B: SVC has the highest median recall score of 0.7
-- Failure C: SVC has the highest median recall score of 0.65
-- Failure D: SVC has the highest median recall score of 0.75
-- Failure E: SVC has the highest median recall score of 0.73
+Before applying undersampling, the Support Vector Classifier (SVC) achieved the highest overall recall scores for Failures A to E:
+- Failure A: SVC recorded the highest median recall score of 0.8
+- Failure B: SVC reached a median recall score of 0.7, the highest among all models
+- Failure C: SVC achieved the highest median recall score of 0.65
+- Failure D: SVC also had the highest median recall score of 0.75
+- Failure E: SVC's median recall score was 0.73, the highest for this category
+
+After applying undersampling, the best performing models for each Failure are varied:
+- Failure A: RandomForest excelled with the highest median recall score of 0.81
+- Failure B: XGBoost led with a median recall score of 0.73
+- Failure C: RandomForest again had the best performance, achieving a median recall score of 0.76
+- Failure D: RandomForest maintained its advantage with a median recall score of 0.74
+- Failure E: RandomForest and Gradient Boost tied with the highest median recall score of 0.78
+
+Overall, it is evident that undersampling enhanced the recall scores across Failures A to E.
 
 However, the trade-off is exceptionally poor precision scores which is evident in the low Average Precision (AP) score show in the precision-recall curves. This means that the model has a high number of false positives
 
