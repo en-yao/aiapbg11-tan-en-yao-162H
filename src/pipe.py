@@ -34,7 +34,6 @@ class ClassifierPipeline:
         return {
             'RandomForest': (RandomForestClassifier(class_weight='balanced', random_state=self.config.split['random_state']), self.config.param_grid['RandomForest']),
             'SVC': (SVC(class_weight='balanced', probability=True, random_state=self.config.split['random_state']), self.config.param_grid['SVC']),
-            'KNN': (KNeighborsClassifier(), self.config.param_grid['KNN']),
             'DecisionTree': (DecisionTreeClassifier(class_weight='balanced', random_state=self.config.split['random_state']), self.config.param_grid['DecisionTree']),
             'GradientBoosting': (GradientBoostingClassifier(random_state=self.config.split['random_state']), self.config.param_grid['GradientBoosting']),
             'XGBoost': (XGBClassifier(eval_metric='logloss', random_state=self.config.split['random_state']), self.config.param_grid['XGBoost']),
