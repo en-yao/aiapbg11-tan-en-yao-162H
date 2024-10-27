@@ -43,12 +43,13 @@ To remove algorithms and parameters, comment out the algorithms and their parame
 
 3. Set up the pipeline
 - *Steps:* Combines imputer, scaler, encoder, and classifier to streamline the data transformation and model training workflow
+- *Undersampler:* Mitigates class imbalance by reducing the number of majority class samples, enabling more balanced learning across classes
 - *Classifier model:* Specifies the model type to be trained on
 
 4. Create RandomSearchCV object
 - *Pipeline:* Combines data transformation steps with model training within cross-validation
 - *Param_grid:* Specifies the range of hyperparameters for optimizing model performance
-- *Cross validation:* Helps reduce overfitting
+- *Cross validation:* Evaluates the model on multiple test sets to provide a more reliable estimate of model performance on new, unseen data
 - *Make predictions:* Predictions are generated on a test or hold-out set to evaluate model performance
 
 5. Compute and print performance
